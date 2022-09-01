@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
-const index = () => {
+import FeedModal from "./FeedModal";
+import FeedPhotos from "./FeedPhotos";
+
+const Feed = () => {
+  const [modalPhoto, setModalPhoto] = React.useState(null);
+
   return (
-    <div>index</div>
-  )
-}
+    <div>
+      {modalPhoto && <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto}/>}
+      <FeedPhotos setModalPhoto={setModalPhoto}/>
+    </div>
+  );
+};
 
-export default index
+export default Feed;

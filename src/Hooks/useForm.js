@@ -22,14 +22,14 @@ const useForm = (type) => {
   const [error, setError] = React.useState(null);
 
   function validate(value) {
-    if (type === false) return true; //Verifico se o type foi definido.
+    if (type === false) return true; //Verifico se o type foi definido, pois se ele passar false quando chamar, não é pra ser validado, então eu tenho que retornar true
 
     if (value.length === 0) {
       //Verifica se tem alguma coisa no value, se a pessoa passou algum valor.
       setError("Preencha um valor");
       return false;
     } else if (types[type] && !types[type].regex.test(value)) {
-      //Verifico se o tipo existe, depois faço o teste de validação.
+      //Verifico se o tipo existe, depois faço o teste de !validação.
       setError(types[type].message);
       return false;
     } else {
@@ -39,6 +39,7 @@ const useForm = (type) => {
   }
 
   function onChange({ target }) {
+    console.log('testando o erro => ' + error)
     if(error) validate(target.value);
     setValue(target.value);
   }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { GET_USER, TOKEN_POST, TOKEN_VALIDATE_POST } from "./api";
 
