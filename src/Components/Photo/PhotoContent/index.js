@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../UserContext";
 import PhotoComments from "../PhotoComments";
+import PhotoDelete from '../PhotoDelete';
 import {
   Attributes,
   Author,
@@ -13,6 +15,7 @@ import {
 } from "./styles";
 
 const PhotoContent = ({ data }) => {
+  const user = React.useContext(UserContext);
   const { photo, comments } = data;
   return (
     <Photo>
@@ -20,7 +23,12 @@ const PhotoContent = ({ data }) => {
       <Details>
         <div>
           <Author>
-            <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+            {user.data && user.data.username === photo.author ? (
+              <PhotoDelete />
+            ) : (
+              <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+            )}
+
             <Visualizacoes>{photo.acessos}</Visualizacoes>
           </Author>
           <Title>

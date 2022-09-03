@@ -18,7 +18,8 @@ export const Textarea = styled.textarea`
   border-radius: 0.2rem;
   background: #eee;
   transition: 0.2s;
-  &&:focus, :hover{
+  &&:focus,
+  :hover {
     outline: none;
     border-color: #fb1;
     background: white;
@@ -27,12 +28,31 @@ export const Textarea = styled.textarea`
 `;
 
 export const Button = styled.button`
-    border: none;
-    cursor: pointer;
-    color: #333;
-    background: transparent;
-    font-size: 1rem;
-    padding: 0 1rem;
-    overflow: hidden;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  background: transparent;
+  font-size: 1rem;
+  padding: 0 1rem;
+  overflow: hidden;
+  &&:focus, :hover {
+    outline: none;
+  }
+  &&:focus svg path,
+  :hover svg path {
+    fill: #fea;
+    stroke: #fb1;
+  }
+  &&:focus svg g,
+  :hover svg g {
+    animation: latir .6s infinite; 
+  }
+  @keyframes latir{
+    from{
+      opacity: 0
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
-

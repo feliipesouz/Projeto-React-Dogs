@@ -24,13 +24,13 @@ export const UserStorage = ({ children }) => {
     [navigate]
   );
 
-  async function getUser(token) {
+  async function getUser(token) { //Aqui pegamos os dados do nosso usuario: id, username, nome, email.
     const { url, options } = GET_USER(token);
     const response = await fetch(url, options);
     const json = await response.json();
     setData(json);
     setLogin(true);
-    console.log(json);
+    console.log('getUser do meu UserContext :',json);
   }
 
   async function userLogin(username, password) {
