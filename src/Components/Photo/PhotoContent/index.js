@@ -13,18 +13,20 @@ import {
   Title,
   Visualizacoes,
 } from "./styles";
+import Image from '../../Helper/Image';
 
-const PhotoContent = ({ data }) => {
+const PhotoContent = ({ data, single }) => {
   const user = React.useContext(UserContext);
   const { photo, comments } = data;
   return (
     <Photo>
-      <Img src={photo.src} alt={photo.title}></Img>
+      <Image src={photo.src} alt={photo.title} />
+      {/* <Img src={photo.src} alt={photo.title}></Img> */}
       <Details>
         <div>
           <Author>
             {user.data && user.data.username === photo.author ? (
-              <PhotoDelete />
+              <PhotoDelete id={photo.id}/>
             ) : (
               <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
             )}

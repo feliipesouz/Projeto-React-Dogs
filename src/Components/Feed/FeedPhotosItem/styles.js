@@ -15,7 +15,7 @@ export const Photo = styled.li`
     }
 `; 
 
-export const Img = styled.img`
+export const Img = styled.div`
     grid-area: 1/1;
 `;
 

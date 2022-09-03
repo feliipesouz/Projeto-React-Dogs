@@ -28,12 +28,12 @@ export const Photo = styled.div`
     }
 `;
 
-export const Img = styled.img`
-    grid-row: 1/4;
-    @media (max-width: 64rem){
-        grid-row: 1;
-    }
-`;
+// export const Img = styled.img`
+//     grid-row: 1/4;
+//     @media (max-width: 64rem){
+//         grid-row: 1;
+//     }
+// `;
 
 export const Details = styled.div`
     padding: 2rem 2rem 0 2rem;
