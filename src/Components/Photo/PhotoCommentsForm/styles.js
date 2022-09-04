@@ -4,7 +4,7 @@ export const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: stretch;
-  margin: 1rem;
+  margin: ${props => props.single ? '1rem 0' : '1rem'};
 `;
 
 export const Textarea = styled.textarea`

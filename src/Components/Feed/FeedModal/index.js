@@ -4,6 +4,7 @@ import useFetch from "../../../Hooks/useFetch";
 import Loading from "../../Helper/Loading";
 import Error from "../../Helper/Error";
 import PhotoContent from '../../Photo/PhotoContent';
+import { Modal } from "./styles";
 
 //Aqui fazemos o request novamente pois agora queremos a foto e os comentários.
 const FeedModal = ({ photo, setModalPhoto }) => {//Photo é uma propriedade, e por isso deve ser passada como dependencia do useEffect();
@@ -19,12 +20,12 @@ const FeedModal = ({ photo, setModalPhoto }) => {//Photo é uma propriedade, e p
   }
 
   return (
-    <div onClick={handleOutsideClick}>
+    <Modal onClick={handleOutsideClick}>
       {error && <Error error={error} />}
       {loading && <Loading />}
       {data && <PhotoContent data={data} />}
       {/* não passo photo.src porque eu quero pegar o resultado da minha request, são fotos diferentes, por isso eu passo o data */}
-    </div>
+    </Modal>
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../UserContext";
 import PhotoComments from "../PhotoComments";
-import PhotoDelete from '../PhotoDelete';
+import PhotoDelete from "../PhotoDelete";
 import {
   Attributes,
   Author,
@@ -13,20 +13,24 @@ import {
   Title,
   Visualizacoes,
 } from "./styles";
-import Image from '../../Helper/Image';
+import Image from "../../Helper/Image";
 
 const PhotoContent = ({ data, single }) => {
   const user = React.useContext(UserContext);
   const { photo, comments } = data;
   return (
-    <Photo>
-      <Image src={photo.src} alt={photo.title} />
-      {/* <Img src={photo.src} alt={photo.title}></Img> */}
-      <Details>
+    <Photo single={single}>
+      {single ? (
+        <Image single={single} src={photo.src} alt={photo.title} />
+      ) : (
+        <Img src={photo.src} alt={photo.title} />
+      )}
+
+      <Details single={single}>
         <div>
           <Author>
             {user.data && user.data.username === photo.author ? (
-              <PhotoDelete id={photo.id}/>
+              <PhotoDelete id={photo.id} />
             ) : (
               <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
             )}
@@ -42,7 +46,7 @@ const PhotoContent = ({ data, single }) => {
           </Attributes>
         </div>
       </Details>
-      <PhotoComments id={photo.id} comments={comments} />
+      <PhotoComments single={single} id={photo.id} comments={comments} />
     </Photo>
   );
 };

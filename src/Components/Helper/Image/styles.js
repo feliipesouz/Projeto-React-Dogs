@@ -28,4 +28,6 @@ export const Img = styled.img`
     grid-area: 1/1;
     opacity: 0;
     transition: .2s;
+    border-radius: ${props => props.single ? '0.4rem' : 0};
+    overflow: ${props => props.single ? 'hidden' : 'visible'};
 `;

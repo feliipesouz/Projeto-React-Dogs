@@ -4,7 +4,7 @@ import { COMMENT_POST } from "../../../api";
 import useFetch from "../../../Hooks/useFetch";
 import { Button, Form, Textarea } from "./styles";
 
-const PhotoCommentsForm = ({ id, setComments }) => {
+const PhotoCommentsForm = ({ id, setComments, single }) => {
   const [comment, setComment] = React.useState(null);
   const { request, error } = useFetch();
 
@@ -12,7 +12,7 @@ const PhotoCommentsForm = ({ id, setComments }) => {
     event.preventDefault();
     const { url, options } = COMMENT_POST(id, { comment });
     const { response, json } = await request(url, options);
-    console.log(json)
+    
     if (response.ok) {
       setComments((comments) => [...comments, json]);
       //Aqui eu faço como função pra acessar todos os comentarios que já existem, desestruturo e implemento o novo comentario.
@@ -20,7 +20,7 @@ const PhotoCommentsForm = ({ id, setComments }) => {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form single={single} onSubmit={handleSubmit}>
       <Textarea
         id="comment"
         name="comment"
