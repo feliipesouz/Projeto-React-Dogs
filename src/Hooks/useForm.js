@@ -21,7 +21,7 @@ const useForm = (type) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(null);
 
-  function validate(value) {
+  function validate(value) {//Valor que foi digitado no input
     if (type === false) return true; //Verifico se o type foi definido, pois se ele passar false quando chamar, não é pra ser validado, então eu tenho que retornar true
 
     if (value.length === 0) {
@@ -39,7 +39,6 @@ const useForm = (type) => {
   }
 
   function onChange({ target }) {
-    console.log('testando o erro => ' + error)
     if(error) validate(target.value);
     setValue(target.value);
   }
@@ -49,7 +48,7 @@ const useForm = (type) => {
     setValue,
     onChange,
     error,
-    validate: () => validate(value), //Exportando um método que já ativa o validate e verifica o valor.
+    validate: () => validate(value), //Exportando um método que já ativa o validate e verifica o valor.(Um método que ativa outro método)
     onBlur: () => validate(value), //Quando o usuário clica no campo de formulário e sai.
   };
 };
