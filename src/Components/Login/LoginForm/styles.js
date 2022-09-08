@@ -20,6 +20,7 @@ export const Perdeu = styled.form`
 
 export const Cadastro = styled.div`
   margin-top: 4rem;
+  margin-bottom: 4rem;
 `;
 
 export const Subtitle = styled.h2`

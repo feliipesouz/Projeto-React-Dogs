@@ -19,7 +19,7 @@ export const Img = styled.div`
     grid-area: 1/1;
 `;
 
-export const Span = styled.span`
+export const Visualizacao = styled.span`
     background: rgba(0, 0, 0, 0.3);
     color: white;
     font-size: 1rem;

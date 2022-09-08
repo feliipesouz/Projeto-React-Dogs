@@ -6,12 +6,12 @@ import FeedPhotos from "./FeedPhotos";
 import PropTypes from "prop-types";
 
 const Feed = ({ user }) => {
-  
   const [modalPhoto, setModalPhoto] = React.useState(null);
   const [pages, setPages] = React.useState([1]);
   const [infinite, setInfinite] = React.useState(true);
 
   React.useEffect(() => {
+    console.log("entrou");
     let wait = false;
     function infiniteScroll() {
       if (infinite) {
@@ -28,7 +28,6 @@ const Feed = ({ user }) => {
     }
     window.addEventListener("wheel", infiniteScroll);
     window.addEventListener("scroll", infiniteScroll);
-
     return () => {
       window.removeEventListener("wheel", infiniteScroll);
       window.removeEventListener("scroll", infiniteScroll);

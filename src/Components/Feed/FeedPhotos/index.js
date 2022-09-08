@@ -8,7 +8,7 @@ import { Feed } from "./styles";
 
 const FeedPhotos = ({ page, user, setModalPhoto, setInfinite }) => {
   const { data, loading, error, request } = useFetch();
-  
+
   React.useEffect(() => {
     async function fetchPhotos() {
       const total = 6;
@@ -23,7 +23,7 @@ const FeedPhotos = ({ page, user, setModalPhoto, setInfinite }) => {
   if (loading) return <Loading />;
   if (data)
     return (
-      <Feed className="animaLeft">
+      <Feed className="animeLeft">
         {data.map((photo) => (
           <FeedPhotosItem
             key={photo.id}
