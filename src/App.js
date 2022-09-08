@@ -8,25 +8,28 @@ import { UserStorage } from "./UserContext";
 import User from "./Components/User";
 import ProtectedRoute from "./Components/Header/ProtectedRoute";
 import "./App.css";
-import Photo from '../src/Components/Photo';
+import Photo from "../src/Components/Photo";
 import UserProfile from "./Components/User/UserProfile";
 import NotFound from "./Components/NotFound";
 
-
 function App() {
   return (
-    <div>
+    <div className="App">
+      {/*Isso para deixar o footer sempre em baixo*/}
       <BrowserRouter>
         <UserStorage>
           <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="login/*" element={<Login />} />
-            <ProtectedRoute path="conta/*" element={<User />} />
-            <Route path="foto/:id" element={<Photo />}/>
-            <Route path="perfil/:user" element={<UserProfile />}/>
-            <Route path="*" element={<NotFound />}/>
-          </Routes>
+          <main className="AppBody">
+            {/*Isso para deixar o footer sempre em baixo*/}
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="login/*" element={<Login />} />
+              <ProtectedRoute path="conta/*" element={<User />} />
+              <Route path="foto/:id" element={<Photo />} />
+              <Route path="perfil/:user" element={<UserProfile />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
           <Footer />
         </UserStorage>
       </BrowserRouter>

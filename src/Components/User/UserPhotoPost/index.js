@@ -7,6 +7,7 @@ import Error from "../../Helper/Error";
 import { PHOTO_POST } from "../../../api";
 import { File, PhotoPost, Preview } from "./styles";
 import { useNavigate } from "react-router-dom";
+import Head from "../../Helper/Head";
 
 const UserPhotoPost = () => {
   const nome = useForm();
@@ -14,11 +15,11 @@ const UserPhotoPost = () => {
   const idade = useForm("number");
   const [img, setImg] = React.useState({});
   const navigate = useNavigate();
-  
+
   const { data, error, loading, request } = useFetch();
-  
+
   React.useEffect(() => {
-    if (data) navigate("/conta");//Verifico se tem data pois as vezes ele altera pra null.
+    if (data) navigate("/conta"); //Verifico se tem data pois as vezes ele altera pra null.
   }, [data, navigate]);
 
   function handleSubmit(event) {
@@ -43,6 +44,7 @@ const UserPhotoPost = () => {
   }
   return (
     <PhotoPost>
+      <Head title="Poste sua foto" />
       <form onSubmit={handleSubmit}>
         <Input label="Nome" type="text" name="nome" {...nome} />
         <Input label="Peso" type="number" name="peso" {...peso} />

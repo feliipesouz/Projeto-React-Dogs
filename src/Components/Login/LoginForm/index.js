@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Input from "../../Forms/Input";
 import Button from "../../Forms/Button";
-import { Section } from "../LoginCreate/styles";
 import useForm from "../../../Hooks/useForm";
 import { UserContext } from "../../../UserContext";
 import Error from "../../Helper/Error";
-import { Cadastro, Form, Subtitle, TemConta } from "./styles";
-import { StyledButton } from '../../Forms/Button/styles';
+import { Cadastro, Form, Perdeu, Subtitle, TemConta } from "./styles";
+import { StyledButton } from "../../Forms/Button/styles";
+import Head from "../../Helper/Head";
 
 const LoginForm = () => {
   const username = useForm(); //Caso eu passe como (false) ele não irá validar esse campo!
@@ -24,9 +24,12 @@ const LoginForm = () => {
   }
 
   return (
-    <Section className="animeLeft">{/*Concertar, não ta pegando*/}
-      <h1 className="title">Login</h1>{/*Concertar, não ta pegando*/}
-      <Form  onSubmit={handleSubmit}>
+    <section className="animeLeft">
+      {/*Concertar, não ta pegando*/}
+      <Head title="Login" />
+      <h1 className="title">Login</h1>
+      {/*Concertar, não ta pegando*/}
+      <Form onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
         {loading ? (
@@ -36,13 +39,15 @@ const LoginForm = () => {
         )}
         <Error error={error} />
       </Form>
-      <Link to='/login/perdeu'>Perdeu a senha?</Link>
+      <Perdeu><Link to="/login/perdeu">Perdeu a senha?</Link></Perdeu>
       <Cadastro>
         <Subtitle>Cadastre-se</Subtitle>
         <TemConta>Ainda não tem conta? Cadastre-se no site.</TemConta>
       </Cadastro>
-      <StyledButton><Link to="/login/criar">Cadastro</Link></StyledButton>
-    </Section>
+      <StyledButton>
+        <Link to="/login/criar">Cadastro</Link>
+      </StyledButton>
+    </section>
   );
 };
 
